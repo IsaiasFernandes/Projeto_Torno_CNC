@@ -1,10 +1,14 @@
 const express = require("express");
 
-const routes = express.Router();
 const defeitoController = require("./controllers/defeitoController");
 const localController = require("./controllers/localController");
-const problemaController = require("./controllers/problemaController");
+const solucaoController = require("./controllers/solucaoController");
 
-routes.get("/defeito", defeitoController.index);
+const routes = express.Router();
+
+/* routes.get("/defeito", defeitoController.index);
+routes.get("/defeito/defeito", defeitoController.searchDefeito); */
 routes.get("/local", localController.index);
-routes.get("/problema", problemaController.index);
+routes.get("/local/:id", localController.searchLocal);
+
+module.exports = routes;
