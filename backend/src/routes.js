@@ -6,9 +6,10 @@ const solucaoController = require("./controllers/solucaoController");
 
 const routes = express.Router();
 
-/* routes.get("/defeito", defeitoController.index);
-routes.get("/defeito/defeito", defeitoController.searchDefeito); */
-routes.get("/local", localController.index);
-routes.get("/local/:id", localController.searchLocal);
+routes.get("/");
+routes.get("/locais", localController.index);
+routes.get("/defeitos/", defeitoController.searchDefeito);
+routes.get("/solucao/", solucaoController.searchSolucao);
+routes.post("/criacao/");
 
 module.exports = routes;

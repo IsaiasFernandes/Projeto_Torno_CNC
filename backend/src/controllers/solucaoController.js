@@ -9,11 +9,12 @@ module.exports = {
     return res.json(solucao);
   },
 
-  async searchDefeitos(req) {
+  async searchSolucao(req, res) {
     const ret = await connection("tb_solucao")
-      .where("id_local", req.id_local)
-      .select("id_defeito");
+      .where("id_defeito", req.query.id)
+      .where("id_local", req.query.local)
+      .select("*");
 
-    return 0;
+    return res.json(ret);
   },
 };

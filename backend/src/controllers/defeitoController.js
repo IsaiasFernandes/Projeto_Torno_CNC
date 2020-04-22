@@ -1,4 +1,5 @@
 const connection = require("../database/connection");
+const auxLocal = require("./auxLocal");
 
 module.exports = {
   async index(req, res) {
@@ -7,14 +8,11 @@ module.exports = {
     return res.json(defeito);
   },
 
-  async searchDefeito(req) {
-    console.log(req);
-    const ret = await connection("tb_defeito")
-      .where("id_defeito", req)
-      .select("*");
+  async searchDefeito(req, res) {
+    let idDefeitos = await auxLocal.searchIdDefeitos(req.query.id);
 
-    console.log(ret);
+    const defeitos = await auxLocal.getTodos(idDefeitos);
 
-    return ret;
+    return res.json(defeitos);
   },
 };
