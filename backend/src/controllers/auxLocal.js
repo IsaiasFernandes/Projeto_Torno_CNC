@@ -9,6 +9,16 @@ async function searchLocal(local) {
   return retornoLocal.id_local;
 }
 
+async function searchIdMax(id) {
+  const retorno = await connection("tb_solucao").max("id_solucao");
+
+  let retId;
+  retorno.forEach((ret) => {
+    retId = Object.values(ret);
+  });
+
+  return retId;
+}
 async function searchIdDefeitos(defeito) {
   const retornoDefeito = await connection("tb_solucao")
     .where("id_local", defeito)
@@ -43,4 +53,4 @@ async function getTodos(idDefeitos) {
   return defeitos;
 }
 
-module.exports = { searchLocal, searchIdDefeitos, getTodos };
+module.exports = { searchLocal, searchIdDefeitos, getTodos, searchIdMax };

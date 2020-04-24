@@ -15,4 +15,17 @@ module.exports = {
 
     return res.json(defeitos);
   },
+
+  async create(req, res) {
+    try {
+      const { id_defeito, nome_defeito } = req.body;
+      await connection("tb_defeito").insert({
+        id_defeito,
+        nome_defeito,
+      });
+      return res.status(204).send();
+    } catch (err) {
+      return res.status(400).send();
+    }
+  },
 };
