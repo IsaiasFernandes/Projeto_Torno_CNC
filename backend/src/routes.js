@@ -9,16 +9,10 @@ const routes = express.Router();
 
 routes.get("/locais", localController.index);
 routes.post("/locais", localController.create);
-routes.get("/defeitos", defeitoController.searchDefeito);
+routes.get("/defeitos", defeitoController.index);
+routes.post("/defeitosId", defeitoController.searchDefeito);
 routes.post("/defeitos", defeitoController.create);
 routes.get("/solucao", solucaoController.searchSolucao);
-routes.post(
-  "/criacao",
-  criacaoController.create,
-  localController.index,
-  localController.create,
-  defeitoController.index,
-  defeitoController.create
-);
+routes.post("/criacao", criacaoController.create);
 
 module.exports = routes;
